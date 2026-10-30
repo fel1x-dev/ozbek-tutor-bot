@@ -157,3 +157,13 @@ async def health_check():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=config.PORT)
+
+async def run_bot():
+    # Eski webhook bo'lsa o'chirib tashlaymiz
+    await bot.delete_webhook(drop_pending_updates=True)
+    print("O'zbekTutor boti PythonAnywhere-da ishga tushdi...")
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(run_bot())
